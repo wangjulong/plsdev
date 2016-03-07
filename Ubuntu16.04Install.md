@@ -182,3 +182,17 @@ pls2.conf copy to /etc/apache2/sites-enable/pls2.conf
     apt-get install ttf-wqy-microhei  #文泉驿-微米黑
     apt-get install ttf-wqy-zenhei  #文泉驿-正黑
     apt-get install xfonts-wqy #文泉驿-点阵宋体
+
+> software center Synaptic
+
+    apt-get install synaptic gdebi
+
+> system setting tools
+
+    apt-get install unity-tweak-tool gnome-tweak-tool
+    
+> clean 
+
+    apt-get -y autoremove 
+    apt-get -y autoclean 
+    apt-get -y clean
