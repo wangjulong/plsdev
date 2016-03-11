@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.4.1deb2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 2016-03-11 04:25:54
--- 服务器版本： 10.1.10-MariaDB
--- PHP Version: 7.0.4
+-- Host: localhost
+-- Generation Time: 2016-03-11 21:04:10
+-- 服务器版本： 5.6.28-1ubuntu2
+-- PHP Version: 7.0.3-9ubuntu1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -50,13 +50,6 @@ CREATE TABLE `companies` (
   `company_status` enum('active','inactive') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `companies`
---
-
-INSERT INTO `companies` (`company_id`, `company_name`, `company_email`, `company_address`, `company_created_date`, `company_status`) VALUES
-(1, 'ABC', 'abc@sina.com', 'some address', '2016-03-11 04:03:35', 'active');
-
 -- --------------------------------------------------------
 
 --
@@ -88,8 +81,8 @@ CREATE TABLE `migration` (
 --
 
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1457533937),
-('m130524_201442_init', 1457533939);
+('m000000_000000_base', 1457701430),
+('m130524_201442_init', 1457701433);
 
 -- --------------------------------------------------------
 
@@ -108,13 +101,6 @@ CREATE TABLE `user` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- 转存表中的数据 `user`
---
-
-INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'samksan', 'x5QKijRjy5VFUnQ75Q_7_sJxIu3hRHOG', '$2y$13$4zwdAi6ePWqAqLS50vliZ.thXWSi9E1qbCLWbxbVQQ/D2xRqkCpYi', NULL, 'samksan@163.com', 10, 1457665635, 1457665635);
 
 --
 -- Indexes for dumped tables
@@ -169,7 +155,7 @@ ALTER TABLE `branches`
 -- 使用表AUTO_INCREMENT `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- 使用表AUTO_INCREMENT `departments`
 --
@@ -179,7 +165,7 @@ ALTER TABLE `departments`
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- 限制导出的表
 --
