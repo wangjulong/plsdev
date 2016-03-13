@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 2016-03-11 21:04:10
--- 服务器版本： 5.6.28-1ubuntu2
--- PHP Version: 7.0.3-9ubuntu1
+-- Host: 127.0.0.1
+-- Generation Time: 2016-03-13 02:20:43
+-- 服务器版本： 10.1.10-MariaDB
+-- PHP Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,6 +35,13 @@ CREATE TABLE `branches` (
   `branch_status` enum('active','inactive') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `branches`
+--
+
+INSERT INTO `branches` (`branch_id`, `companies_company_id`, `branch_name`, `branch_address`, `branch_created_date`, `branch_status`) VALUES
+(1, 1, 'main branch', 'main branch address', '2016-03-12 07:03:59', 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -46,9 +53,18 @@ CREATE TABLE `companies` (
   `company_name` varchar(100) NOT NULL,
   `company_email` varchar(100) NOT NULL,
   `company_address` varchar(255) NOT NULL,
+  `company_start_date` date NOT NULL,
   `company_created_date` datetime NOT NULL,
   `company_status` enum('active','inactive') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `companies`
+--
+
+INSERT INTO `companies` (`company_id`, `company_name`, `company_email`, `company_address`, `company_start_date`, `company_created_date`, `company_status`) VALUES
+(1, 'ABC', 'abc@sina.com', 'some address', '0000-00-00', '2016-03-11 04:03:35', 'active'),
+(2, 'WJL', 'samksan@163.com', 'some address wjl', '0000-00-00', '2016-03-12 07:03:26', 'active');
 
 -- --------------------------------------------------------
 
@@ -64,6 +80,14 @@ CREATE TABLE `departments` (
   `department_created_date` datetime NOT NULL,
   `department_status` enum('active','inactive') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `departments`
+--
+
+INSERT INTO `departments` (`department_id`, `branches_branch_id`, `department_name`, `companies_company_id`, `department_created_date`, `department_status`) VALUES
+(2, 1, 'Develop', 2, '2016-03-12 08:03:58', 'active'),
+(3, 1, 'other departmeng', 1, '2016-03-13 01:03:34', 'active');
 
 -- --------------------------------------------------------
 
@@ -81,8 +105,8 @@ CREATE TABLE `migration` (
 --
 
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1457701430),
-('m130524_201442_init', 1457701433);
+('m000000_000000_base', 1457533937),
+('m130524_201442_init', 1457533939);
 
 -- --------------------------------------------------------
 
@@ -101,6 +125,13 @@ CREATE TABLE `user` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'samksan', 'x5QKijRjy5VFUnQ75Q_7_sJxIu3hRHOG', '$2y$13$4zwdAi6ePWqAqLS50vliZ.thXWSi9E1qbCLWbxbVQQ/D2xRqkCpYi', NULL, 'samksan@163.com', 10, 1457665635, 1457665635);
 
 --
 -- Indexes for dumped tables
@@ -150,22 +181,22 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 限制导出的表
 --
