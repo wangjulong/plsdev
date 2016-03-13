@@ -1,5 +1,6 @@
 <?php
 
+use dosamigos\datepicker\DatePicker;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -34,7 +35,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'branch_name',
             'branch_address',
-            'branch_created_date',
+//            'branch_created_date',
+//            [
+//                'attribute' => 'branch_created_date',
+//                'value' => 'branch_created_date',
+//                'format' => 'raw',
+//                'filter' => DatePicker::widget([
+//                    'model' => $searchModel,
+//                    'attribute' => 'branch_created_date',
+//                    'clientOptions' => [
+//                        'autoclose' => true,
+//                        'format' => 'yyyy-mm-dd'
+//                    ]
+//                ])
+//            ],
             // 'branch_status',
 
             ['class' => 'yii\grid\ActionColumn'],
