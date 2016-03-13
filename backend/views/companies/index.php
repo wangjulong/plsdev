@@ -1,5 +1,6 @@
 <?php
 
+use dosamigos\datepicker\DatePicker;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -29,7 +30,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'company_name',
             'company_email:email',
             'company_address',
-            'company_created_date',
+//            'company_created_date',
+            [
+                'attribute' => 'company_created_date',
+                'value' => 'company_created_date',
+                'format' => 'raw',
+                'filter' => DatePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'company_created_date',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd'
+                    ]
+                ])
+            ],
+
             // 'company_status',
 
             ['class' => 'yii\grid\ActionColumn'],
