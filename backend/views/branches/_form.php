@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'companies_company_id')->widget(Select2::classname(), [
         'data' => ArrayHelper::map(Companies::find()->all(), 'company_id', 'company_name'),
         'language' => 'en',
-        'options' => ['placeholder' => 'Select a state ...'],
+        'options' => ['placeholder' => 'Select a Company name ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
